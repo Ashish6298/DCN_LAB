@@ -1,0 +1,50 @@
+first do the schema like in schema.png
+now open consoles and enter the following commands
+    pc1>ip 192.168.1.1/24 192.168.1.254
+    pc2>ip 192.168.1.2/24 192.168.1.254
+    pc3>ip 192.168.2.1/24 192.168.2.254
+    pc4>ip 192.168.2.2/24 192.168.2.254
+
+now setup the router 1.
+r1#config t
+
+//setting up the switch connections
+r1(config)#int f0/0
+r1(config-if)#ip address 192.168.1.254 255.255.255.0
+r1(config-if)#no shutdown
+r1(config-if)#exit
+
+//setting up the router2 connections
+r1(config)#int f1/0
+r1(config-if)#ip address 192.168.5.1 255.255.255.0
+r1(config-if)#no shutdown
+r1(config-if)#exit
+
+Now for setting up Router 2
+r2#config t
+
+//setting up the switch connections
+r2(config)#int f0/0
+r2(config-if)#ip address 192.168.2.254 255.255.255.0
+r2(config-if)#no shutdown
+r2(config-if)#exit
+
+//setting up the router2 connections
+r2(config)#int f1/0
+r2(config-if)#ip address 192.168.5.2 255.255.255.0
+r2(config-if)#no shutdown
+r2(config-if)#exit
+
+now send a ping from pc1 to pc4 to check if the connection is established
+pc1>ping 192.168.2.2 -c 1
+
+The output should be Host Unreachable
+
+Now we will establish a connection from router 1 to router 2
+r1(config)#ip route 192.168.2.0 255.255.255.0 192.168.5.2
+r2(config)#ip route 192.168.1.0 255.255.255.0 192.168.5.1
+
+Now if we ping from pc2 to pc4
+pc2>ping 192.168.2.2 -c 1
+
+We observe that the ping is sent successfully implying that the connection has been successfully established.

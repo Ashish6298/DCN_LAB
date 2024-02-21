@@ -1,0 +1,18 @@
+#start with the router config
+config t
+int f0/0
+ip address 192.168.1.254 255.255.255.0
+no shut
+exit
+ip dhcp pool formation
+network 192.168.1.0 255.255.255.0
+default-router 192.168.1.254
+dns-server 192.168.1.254
+class ec2lt
+address range 192.168.1.2 192.168.1.4
+exit
+exit
+do wr
+
+#in pc configuration
+ip dhcp

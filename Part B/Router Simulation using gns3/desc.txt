@@ -1,0 +1,22 @@
+PC configurstion through terminals
+
+PC1.1> ip 192.168.1.1/24 192.168.1.254
+PC1.2> ip 192.168.1.2/24 192.168.1.254
+PC2.1> ip 192.168.2.1/24 192.168.2.254
+PC2.2> ip 192.168.2.2/24 192.168.2.254
+
+
+Router configuration through terminal
+# for connection 0/0
+config t
+int f0/0
+ip address 192.168.1.254 255.255.255.0
+no shut
+end
+
+#for connection 1/0
+config t
+int f1/0
+ip address 192.168.2.254 255.255.255.0
+no shut
+end

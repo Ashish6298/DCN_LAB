@@ -1,0 +1,29 @@
+Do the connection according to the schema.
+
+Select draw an eclipse -> drag -> right click -> lower 1 layer -> rename to grp 1 and grp 2.
+
+open console and assign ip to the pc 
+    pc1>ip 192.168.1.1/24
+    pc2>ip 192.168.1.2/24
+    pc3>ip 192.168.1.3/24
+    pc4>ip 192.168.1.4/24 
+
+Now Ping Pc1 -> Pc3 and Pc1 -> Pc2 
+    pc1>ping 192.168.1.3
+    pc1>ping 192.168.1.2
+
+Now Select the cable/connection and delete it.
+
+Now Right Click on Switch -> Configure -> Port 
+    Port    Vlan 
+     0       1
+     1       1
+     2       2
+     3       2
+Then Click on Apply -> Ok 
+
+Connect all the pc's again to switch and start.
+
+Now Ping Pc1 -> Pc3 and Pc1 -> Pc2 
+    pc1>ping 192.168.1.3  (Not Reachable)
+    pc1>ping 192.168.1.2  (Ping works)

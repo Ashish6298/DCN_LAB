@@ -1,0 +1,13 @@
+Just follow the connection according the schema.png.
+
+Open console for each vpc and assign ip:
+    pc1>ip 192.168.1.1
+    pc2>ip 192.168.1.2
+    pc3>ip 192.168.1.3
+    pc4>ip 192.168.1.4
+
+Right Click on the connection made between pc1 and hub and click start capture.
+
+Then Ping pc1 to pc4
+
+    pc1>ping 192.168.1.4
